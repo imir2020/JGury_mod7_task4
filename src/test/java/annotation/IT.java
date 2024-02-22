@@ -1,6 +1,7 @@
 package annotation;
 
 
+import by.database.config.ApplicationConfiguration;
 import database.integration.TestApplicationRunner;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +16,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @ActiveProfiles("test")
-@SpringBootTest(classes = {TestApplicationRunner.class, ApplicationRunner.class})
+@SpringBootTest(classes = {TestApplicationRunner.class, ApplicationRunner.class, ApplicationConfiguration.class})
 @Transactional
 public @interface IT {
 }

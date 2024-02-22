@@ -1,8 +1,5 @@
 package by.filter;
 
-import by.dto.UserDto;
-import java.io.IOException;
-
 
 //@WebFilter("/admin")
 public class UnsafeFilter  {//implements Filter

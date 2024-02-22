@@ -1,20 +1,18 @@
 package by.database.repository;
 
-import by.database.entity.Orders;
+import by.database.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface OrderRepository extends JpaRepository<Orders,Long> {
+public interface OrderRepository extends JpaRepository<Order,Long> {
 
-    List<Orders> findAllBy();
+    List<Order> findAllBy();
 
-    Optional<Orders> findById(Long id);
+    Optional<Order> findById(Long id);
 
-    Orders save(Orders order);
+    Order save(Order order);
 //
 //    @Modifying
 //    @Query("""
@@ -22,7 +20,7 @@ public interface OrderRepository extends JpaRepository<Orders,Long> {
 //            set o =: order
 //            where o.id =:id
 //            """)
-//    void  updateOrderByName(Orders order, Long id);
+//    void  update(Orders order, Long id);
 
     void deleteById(Long id);
 }

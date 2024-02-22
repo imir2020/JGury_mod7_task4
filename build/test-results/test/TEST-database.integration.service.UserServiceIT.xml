@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="database.integration.service.UserServiceIT" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-02-22T10:53:53" hostname="LOCALHOST" time="0.017">
+  <properties/>
+  <testcase name="saveUser()" classname="database.integration.service.UserServiceIT" time="0.006"/>
+  <testcase name="delete()" classname="database.integration.service.UserServiceIT" time="0.004"/>
+  <testcase name="findLogin()" classname="database.integration.service.UserServiceIT" time="0.005"/>
+  <system-out><![CDATA[Hibernate: 
+    insert 
+    into
+        users
+        (birthday,name,password,status) 
+    values
+        (?,?,?,?)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.birthday,
+        u1_0.name,
+        u1_0.password,
+        u1_0.status 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.birthday,
+        u1_0.name,
+        u1_0.password,
+        u1_0.status 
+    from
+        users u1_0 
+    where
+        u1_0.password=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

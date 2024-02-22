@@ -1,0 +1,54 @@
+package database.integration.service;
+
+
+import annotation.IT;
+import by.database.entity.Category;
+import by.dto.category_dto.FromCategoryDtoToCategory;
+import by.service.CategoryService;
+import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+@IT
+@RequiredArgsConstructor
+public class CategoryServiceIT {
+    private final CategoryService categoryService;
+
+    @Test
+    public void findAll() {
+        var actualResult = categoryService.findAll();
+        assertTrue(actualResult.size() > 0);
+        actualResult.forEach(System.out::println);
+    }
+
+    @Test
+    public void findById() {
+        Long id = 1L;
+        var actual = categoryService.findById(id);
+        System.out.println(actual);
+    }
+
+    @Test
+    public void update() {
+        Category category = Category.builder()
+                .id(4L)
+                .categoryName("Unknown_111")
+                .build();
+    }
+
+    @Test
+    public void save() {
+        FromCategoryDtoToCategory category = FromCategoryDtoToCategory.builder()
+                .categoryName("Натуральные соки")
+                .build();
+        categoryService.save(category);
+    }
+
+    @Test
+    public void deleteById() {
+        Long id = 1L;
+        categoryService.delete(id);
+
+    }
+}

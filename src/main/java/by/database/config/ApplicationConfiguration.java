@@ -1,13 +1,6 @@
 package by.database.config;
 
 
-import by.database.repository.CategoryRepository;
-import by.database.repository.EmployeesRepository;
-import by.mapper.DtoToEmployee;
-import by.mapper.EmployeeToDto;
-import by.service.CategoryService;
-import by.service.EmployeeService;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 

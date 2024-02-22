@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="database.integration.service.CategoryServiceIT" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-02-22T10:53:53" hostname="LOCALHOST" time="0.022">
+  <properties/>
+  <testcase name="findAll()" classname="database.integration.service.CategoryServiceIT" time="0.006"/>
+  <testcase name="update()" classname="database.integration.service.CategoryServiceIT" time="0.001"/>
+  <testcase name="findById()" classname="database.integration.service.CategoryServiceIT" time="0.004"/>
+  <testcase name="save()" classname="database.integration.service.CategoryServiceIT" time="0.004"/>
+  <testcase name="deleteById()" classname="database.integration.service.CategoryServiceIT" time="0.003"/>
+  <system-out><![CDATA[Hibernate: 
+    select
+        c1_0.id,
+        c1_0.category_name 
+    from
+        category c1_0
+CategoryDto(category=null, categoryName=Питьевая вода)
+CategoryDto(category=null, categoryName=Конфеты)
+CategoryDto(category=null, categoryName=Мясо)
+CategoryDto(category=null, categoryName=Unknown)
+CategoryDto(category=null, categoryName=categoryName1)
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.category_name 
+    from
+        category c1_0 
+    where
+        c1_0.id=?
+Optional[CategoryDto(category=1, categoryName=Питьевая вода)]
+Hibernate: 
+    insert 
+    into
+        category
+        (category_name) 
+    values
+        (?)
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.category_name 
+    from
+        category c1_0 
+    where
+        c1_0.id=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

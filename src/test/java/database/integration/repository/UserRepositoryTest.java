@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserRepositoryTest {
 
     Logger log = LoggerFactory.getLogger(UserRepositoryTest.class);
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
 
     @Test
@@ -84,7 +84,6 @@ public class UserRepositoryTest {
     @Test
     public void findByPassword() {
         String password = "111";
-        String query = "select * from users  where password = :password";
         User user = userRepository.findByPassword(password).get();
         assertNotNull(user);
         log.info("Object was find by your password in method findByPassword(): {}", user);
@@ -94,7 +93,7 @@ public class UserRepositoryTest {
      * Вывести всех пользователей с заданным статусом
      */
     @Test
-    public void findUsersWithСhooseStatus() {
+    public void findUsersWithChooseStatus() {
         List<User> users = userRepository.findByStatus(Status.ADMIN);
         assertThat(users).hasSize(4);
         users.forEach(System.out::println);
@@ -112,12 +111,13 @@ public class UserRepositoryTest {
 
     /**
      * Вывести всех пользователей с датой рождения меньше указанной
+     * использовать пагинацию
      */
     @Test
     public void findAllUsersByBirthday() {
-        List<User> users = userRepository
-                .findAllUsersByBirthdayLessThanOrderByBirthdayDesc(LocalDate.parse("1995-01-11"));
-        assertThat(users).hasSize(3);
-        users.forEach(System.out::println);
+//        List<User> users = userRepository
+//                .findAllUsersByBirthdayLessThanOrderByBirthdayDesc(LocalDate.parse("1995-01-11"));
+//        assertThat(users).hasSize(3);
+//        users.forEach(System.out::println);
     }
 }

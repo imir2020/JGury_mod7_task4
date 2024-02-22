@@ -1,7 +1,5 @@
 package by.servlets;
 
-import by.dto.UserDto;
-
 
 //@WebServlet("/session")
 public class SessionServlet  {//extends HttpServlet

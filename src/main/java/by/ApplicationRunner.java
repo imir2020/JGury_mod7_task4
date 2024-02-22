@@ -12,6 +12,5 @@ public class ApplicationRunner {
         var context = SpringApplication.run(ApplicationRunner.class);
         var categoryRepository = context.getBean(CategoryRepository.class);
         categoryRepository.findAll().stream().forEach(System.out::println);
-
     }
 }

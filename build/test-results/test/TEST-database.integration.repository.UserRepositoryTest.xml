@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="database.integration.repository.UserRepositoryTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-02-22T10:53:53" hostname="LOCALHOST" time="0.047">
+  <properties/>
+  <testcase name="findByPassword()" classname="database.integration.repository.UserRepositoryTest" time="0.008"/>
+  <testcase name="delete()" classname="database.integration.repository.UserRepositoryTest" time="0.004"/>
+  <testcase name="findAllUsersByBirthday()" classname="database.integration.repository.UserRepositoryTest" time="0.001"/>
+  <testcase name="findAll()" classname="database.integration.repository.UserRepositoryTest" time="0.006"/>
+  <testcase name="update()" classname="database.integration.repository.UserRepositoryTest" time="0.002"/>
+  <testcase name="findById()" classname="database.integration.repository.UserRepositoryTest" time="0.003"/>
+  <testcase name="save()" classname="database.integration.repository.UserRepositoryTest" time="0.005"/>
+  <testcase name="findUsersWithChooseStatus()" classname="database.integration.repository.UserRepositoryTest" time="0.007"/>
+  <testcase name="findAllUsersSortedByName()" classname="database.integration.repository.UserRepositoryTest" time="0.006"/>
+  <system-out><![CDATA[Hibernate: 
+    select
+        u1_0.id,
+        u1_0.birthday,
+        u1_0.name,
+        u1_0.password,
+        u1_0.status 
+    from
+        users u1_0 
+    where
+        u1_0.password=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.birthday,
+        u1_0.name,
+        u1_0.password,
+        u1_0.status 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.birthday,
+        u1_0.name,
+        u1_0.password,
+        u1_0.status 
+    from
+        users u1_0
+User(id=1, name=Imir, birthday=1995-01-11, password=111, status=MANAGER)
+User(id=2, name=Vadim, birthday=1984-08-12, password=334, status=ADMIN)
+User(id=3, name=Ivan, birthday=1984-11-09, password=56789, status=ADMIN)
+User(id=4, name=Evgeniy, birthday=1990-09-09, password=333, status=ADMIN)
+User(id=5, name=Ivan, birthday=1995-01-01, password=999, status=ADMIN)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.birthday,
+        u1_0.name,
+        u1_0.password,
+        u1_0.status 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    insert 
+    into
+        users
+        (birthday,name,password,status) 
+    values
+        (?,?,?,?)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.birthday,
+        u1_0.name,
+        u1_0.password,
+        u1_0.status 
+    from
+        users u1_0 
+    where
+        u1_0.status=?
+User(id=2, name=Vadim, birthday=1984-08-12, password=334, status=ADMIN)
+User(id=3, name=Ivan, birthday=1984-11-09, password=56789, status=ADMIN)
+User(id=4, name=Evgeniy, birthday=1990-09-09, password=333, status=ADMIN)
+User(id=5, name=Ivan, birthday=1995-01-01, password=999, status=ADMIN)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.birthday,
+        u1_0.name,
+        u1_0.password,
+        u1_0.status 
+    from
+        users u1_0 
+    order by
+        u1_0.name
+User(id=4, name=Evgeniy, birthday=1990-09-09, password=333, status=ADMIN)
+User(id=1, name=Imir, birthday=1995-01-11, password=111, status=MANAGER)
+User(id=3, name=Ivan, birthday=1984-11-09, password=56789, status=ADMIN)
+User(id=5, name=Ivan, birthday=1995-01-01, password=999, status=ADMIN)
+User(id=2, name=Vadim, birthday=1984-08-12, password=334, status=ADMIN)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

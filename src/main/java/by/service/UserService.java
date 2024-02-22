@@ -2,11 +2,11 @@ package by.service;
 
 
 import by.database.repository.UserRepository;
-import by.dto.CreateUserDto;
-import by.dto.UserDto;
-import by.mapper.DtoToUser;
+import by.dto.user_dto.FromUserDtoToBase;
+import by.dto.user_dto.UserDto;
+import by.mapper.classes.users.DtoToUser;
 import lombok.RequiredArgsConstructor;
-import by.mapper.UserToDto;
+import by.mapper.classes.users.UserToDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @Slf4j
 @RequiredArgsConstructor
 public class UserService {
-    private final DtoToUser createUserMapper = DtoToUser.getInstance();
+    private final DtoToUser createUserMapper;
     private final UserToDto userToDto;
     private final UserRepository userRepository;
 
@@ -31,15 +31,28 @@ public class UserService {
         return result;
     }
 
-    public Long create(CreateUserDto createUserDto) {
+    public Long saveUser(FromUserDtoToBase fromUserDtoToBase) {
 //        var validationFactory = Validation.buildDefaultValidatorFactory();
 //        var validator = validationFactory.getValidator();
 //        var validationResult = validator.validate(createUserDto);
 //        if(!validationResult.isEmpty()){
 //            throw new ConstraintViolationException(validationResult);
 //        }
-        var user = createUserMapper.mapFrom(createUserDto);
+        var user = createUserMapper.mapFrom(fromUserDtoToBase);
         var result = userRepository.save(user);
         return result.getId();
+    }
+
+    public void delete(Long id){
+        userRepository.deleteById(id);
+    }
+
+    public void deleteByPassword(String password){
+       var user = userRepository.findByPassword(password).get();
+       userRepository.deleteById(user.getId());
+    }
+
+    public Optional<UserDto> findById(Long id){
+        return userRepository.findById(id).map(userToDto::mapFrom);
     }
 }
