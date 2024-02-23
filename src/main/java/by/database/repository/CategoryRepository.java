@@ -23,7 +23,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
             update Category c
             set c.categoryName = :categoryName
             where c.id= :id """)
-    void update(String categoryName, Long id);
+    void updateName(String categoryName, Long id);
 
     void deleteById(Long id);
 

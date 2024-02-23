@@ -1,6 +1,6 @@
 package by.dto.user_dto;
 
-import by.database.entity.Status;
+import by.database.entity.UserStatus;
 import lombok.Builder;
 import lombok.Value;
 import java.time.LocalDate;
@@ -11,5 +11,5 @@ public class UserDto {
     Long id;
     String name;
     LocalDate birthday;
-    Status status;
+    UserStatus status;
 }

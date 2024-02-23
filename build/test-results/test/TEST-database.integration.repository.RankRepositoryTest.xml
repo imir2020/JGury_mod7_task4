@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="database.integration.repository.RankRepositoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-02-22T10:53:53" hostname="LOCALHOST" time="0.026">
+<testsuite name="database.integration.repository.RankRepositoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-02-22T17:27:55" hostname="LOCALHOST" time="0.029">
   <properties/>
   <testcase name="delete()" classname="database.integration.repository.RankRepositoryTest" time="0.006"/>
   <testcase name="findAll()" classname="database.integration.repository.RankRepositoryTest" time="0.004"/>
-  <testcase name="update()" classname="database.integration.repository.RankRepositoryTest" time="0.005"/>
+  <testcase name="update()" classname="database.integration.repository.RankRepositoryTest" time="0.006"/>
   <testcase name="findById()" classname="database.integration.repository.RankRepositoryTest" time="0.004"/>
-  <testcase name="save()" classname="database.integration.repository.RankRepositoryTest" time="0.004"/>
+  <testcase name="save()" classname="database.integration.repository.RankRepositoryTest" time="0.005"/>
   <system-out><![CDATA[Hibernate: 
     select
         r1_0.id,
@@ -22,6 +22,13 @@ Hibernate:
         r1_0.salary 
     from
         ranks r1_0
+Hibernate: 
+    update
+        ranks 
+    set
+        salary=? 
+    where
+        id=?
 Hibernate: 
     select
         r1_0.id,

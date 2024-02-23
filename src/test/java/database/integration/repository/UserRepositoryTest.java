@@ -1,7 +1,7 @@
 package database.integration.repository;
 
 import annotation.IT;
-import by.database.entity.Status;
+import by.database.entity.UserStatus;
 import by.database.entity.User;
 import by.database.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -48,7 +48,7 @@ public class UserRepositoryTest {
                 .name("Vadim")
                 .birthday(LocalDate.parse("1984-08-12"))
                 .password("344")
-                .status(Status.ADMIN)
+                .status(UserStatus.ADMIN)
                 .build();
         User userAfterSave = userRepository.save(user);
         assertEquals(user, userAfterSave);
@@ -57,18 +57,13 @@ public class UserRepositoryTest {
 
     @Test
     public void update() {
-//        Long userId = 1L;
-//        Status updateStatus = Status.ADMIN;
-//        User user = userRepository.findById(userId).get();
-//        user.setStatus(updateStatus);
-//        Optional<User> optionalUser = Optional.of(user);
-//        //userRepository.update(user, userId);
-//        userRepository.update(optionalUser, userId);
-//
-//
-//        User userAfterUpdate = userRepository.findById(userId).get();
-//        assertEquals(updateStatus, userAfterUpdate.getStatus());
-//        log.info("Object was updated in method update(): {}", user);
+        Long userId = 1L;
+        UserStatus updateStatus = UserStatus.ADMIN;
+        userRepository.updateStatus(updateStatus, userId);
+
+        User userAfterUpdate = userRepository.findById(userId).get();
+        assertEquals(updateStatus, userAfterUpdate.getStatus());
+        log.info("Status of user was updated in method update(): {}", updateStatus);
 
     }
 
@@ -94,7 +89,7 @@ public class UserRepositoryTest {
      */
     @Test
     public void findUsersWithChooseStatus() {
-        List<User> users = userRepository.findByStatus(Status.ADMIN);
+        List<User> users = userRepository.findByStatus(UserStatus.ADMIN);
         assertThat(users).hasSize(4);
         users.forEach(System.out::println);
     }

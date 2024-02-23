@@ -3,10 +3,10 @@ package by.database.entity;
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum Status {
+public enum UserStatus {
     ADMIN, MANAGER;
 
-    public static Optional<Status> find(String status){
+    public static Optional<UserStatus> find(String status){
         return Arrays.stream(values())
                 .filter(user-> user.name().equals(status))
                 .findFirst();

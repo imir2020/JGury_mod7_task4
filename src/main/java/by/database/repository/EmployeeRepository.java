@@ -19,30 +19,26 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Modifying
     @Query("""
             update Employee e 
-            set e =: employee
-            where e.id =: id
+            set e.address = :employeeAddress
+            where e.id = :id
             """)
-    void update(Employee employee, Long id);
+    void updateAddress(String employeeAddress, Long id);
 
     void deleteById(Long id);
 
-//    @Query("""
-//            select e from Employees e
-//            where not e.rank.id =: 2
-//            order by e.dateBirth
-//            """)
-//    List<Employees> findAllEmployeesLessManagers();
+    @Query("""
+            select e from Employee e
+            where not e.rank.rankName = :greid
+            order by e.dateBirth
+            """)
+    List<Employee> findAllEmployeesLessManagers(Greid greid);
 
-//    @Query("""
-//            select e.phoneNumber from Employees e
-//            where e.id = :id
-//            """)
-//    String findEmployeesPhoneNumberById(Long employeeId);
-//    @Modifying
-//    @Query(" update Employees e " +
-//           " set e.rank.rankName = :status " +
-//           " where e.id =: employeeId ")
-//    Employees changeEmployeeStatus(Long employeeId, Greid status);
+    @Query("""
+            select e.phoneNumber from Employee e
+            where e.id = :id
+            """)
+    String findPhoneNumberById(Long id);
+
 
 }
 

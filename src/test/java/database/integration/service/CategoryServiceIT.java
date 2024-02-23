@@ -8,6 +8,7 @@ import by.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @IT
@@ -30,11 +31,14 @@ public class CategoryServiceIT {
     }
 
     @Test
-    public void update() {
-        Category category = Category.builder()
-                .id(4L)
-                .categoryName("Unknown_111")
-                .build();
+    public void updateName() {
+        Long id = 3L;
+        String categoryName = "Unknown_111";
+        categoryService.updateName(categoryName, id);
+
+        var category = categoryService.findById(id);
+        assertTrue(category.isPresent());
+        assertEquals(categoryName,category.get().getCategoryName());
     }
 
     @Test
@@ -49,6 +53,10 @@ public class CategoryServiceIT {
     public void deleteById() {
         Long id = 1L;
         categoryService.delete(id);
+
+       var expected =  categoryService.findById(id);
+       assertTrue(expected.isEmpty());
+
 
     }
 }

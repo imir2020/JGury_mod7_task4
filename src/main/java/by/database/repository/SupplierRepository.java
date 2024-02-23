@@ -2,6 +2,7 @@ package by.database.repository;
 
 import by.database.entity.Supplier;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -17,13 +18,13 @@ public interface SupplierRepository extends JpaRepository<Supplier, Long> {
     Supplier save(Supplier supplier);
 
 
-//    @Modifying
-//    @Query("""
-//            update Suppliers s
-//            set s =: supplier
-//            where s.id =:id
-//            """)
-//    void update(Suppliers supplier, Long id);
+    @Modifying
+    @Query("""
+            update Supplier s
+            set s.email = :email
+            where s.id = :id
+            """)
+    void updateEmail(String email, Long id);
 
     void deleteById(Long id);
 

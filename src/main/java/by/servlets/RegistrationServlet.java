@@ -1,6 +1,6 @@
 package by.servlets;
 
-import by.database.entity.Status;
+import by.database.entity.UserStatus;
 import by.dto.user_dto.FromUserDtoToBase;
 import by.service.UserService;
 import by.utils.JspHelper;
@@ -24,7 +24,7 @@ public class RegistrationServlet  extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("status", Status.values());
+        req.setAttribute("status", UserStatus.values());
         req.getRequestDispatcher(JspHelper.getPath("registration")).forward(req, resp);
 
     }

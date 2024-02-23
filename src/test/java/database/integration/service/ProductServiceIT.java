@@ -13,6 +13,7 @@ import by.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @IT
@@ -30,13 +31,14 @@ public class ProductServiceIT {
     }
 
     @Test
-    public void findById(){
+    public void findById() {
         Long id = 1L;
         var actual = productService.findById(id);
         assertTrue(actual.isPresent());
     }
+
     @Test
-    public void save(){
+    public void save() {
         var category = categoryRepository.findById(3L).get();
         var supplier = supplierRepository.findById(3L).get();
         FromProductDtoToBase productDto = FromProductDtoToBase.builder()
@@ -50,12 +52,18 @@ public class ProductServiceIT {
     }
 
     @Test
-    public void update(){
+    public void updateProductPriceForOneById() {
+        Long id = 3L;
+        Long priceForOne = 600L;
+        productService.updateProductPriceForOneById(priceForOne, id);
 
+      var product =  productService.findById(id);
+        assertTrue(product.isPresent());
+        assertEquals(priceForOne,product.get().getPriceForOne());
     }
 
     @Test
-    public void delete(){
+    public void delete() {
         Long id = 1L;
         productService.delete(id);
         var actual = productService.findById(id);

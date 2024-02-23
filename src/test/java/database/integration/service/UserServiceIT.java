@@ -2,7 +2,7 @@ package database.integration.service;
 
 
 import annotation.IT;
-import by.database.entity.Status;
+import by.database.entity.UserStatus;
 import by.dto.user_dto.FromUserDtoToBase;
 import by.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class UserServiceIT {
                 .name("Ron")
                 .birthday("1990-01-24")
                 .password("34er67")
-                .status(String.valueOf(Status.ADMIN))
+                .status(String.valueOf(UserStatus.ADMIN))
                 .build();
         userService.saveUser(user);
     }

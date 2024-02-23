@@ -22,9 +22,6 @@ dependencies {
     // https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
 
-
-
-
     implementation 'org.springframework.boot:spring-boot-starter-test'
 
     implementation 'org.mapstruct:mapstruct:1.5.3.Final'

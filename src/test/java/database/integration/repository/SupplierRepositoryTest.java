@@ -53,14 +53,13 @@ public class SupplierRepositoryTest {
 
     @Test
     public void update() {
-//        Long supplierId = 3L;
-//        Suppliers supplier = suppliersRepository.findById(supplierId).get();
-//        supplier.setEmail("qqq@f.to");
-//        supplier.setAddress("Kitezh");
-//        suppliersRepository.update(supplier, supplierId);
-//        Suppliers supplierAfterSave = suppliersRepository.findById(supplierId).get();
-//        assertEquals(supplier, supplierAfterSave);
-//        log.info("Object was updated in method update(): {}", supplier);
+        Long supplierId = 3L;
+        String email = "qqq@f.to";
+
+        suppliersRepository.updateEmail(email, supplierId);
+        Supplier supplierAfterUpdate = suppliersRepository.findById(supplierId).get();
+        assertEquals(email, supplierAfterUpdate.getEmail());
+        log.info("Email was updated in method update(): {}", email);
     }
 
     @Test

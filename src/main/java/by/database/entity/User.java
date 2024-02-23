@@ -33,5 +33,5 @@ public class User implements BaseEntity<Long> {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private UserStatus status;
 }

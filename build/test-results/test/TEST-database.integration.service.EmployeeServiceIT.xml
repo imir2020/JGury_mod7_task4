@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="database.integration.service.EmployeeServiceIT" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-02-22T10:53:53" hostname="LOCALHOST" time="0.026">
+<testsuite name="database.integration.service.EmployeeServiceIT" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-02-22T17:27:55" hostname="LOCALHOST" time="0.033">
   <properties/>
   <testcase name="delete()" classname="database.integration.service.EmployeeServiceIT" time="0.004"/>
   <testcase name="findAll()" classname="database.integration.service.EmployeeServiceIT" time="0.009"/>
-  <testcase name="update()" classname="database.integration.service.EmployeeServiceIT" time="0.001"/>
   <testcase name="findById()" classname="database.integration.service.EmployeeServiceIT" time="0.003"/>
-  <testcase name="save()" classname="database.integration.service.EmployeeServiceIT" time="0.005"/>
+  <testcase name="save()" classname="database.integration.service.EmployeeServiceIT" time="0.006"/>
+  <testcase name="findPhoneNumberById()" classname="database.integration.service.EmployeeServiceIT" time="0.004"/>
+  <testcase name="updateAddress()" classname="database.integration.service.EmployeeServiceIT" time="0.004"/>
   <system-out><![CDATA[Hibernate: 
     select
         e1_0.id,
@@ -101,6 +102,20 @@ Hibernate:
         (address,date_birth,last_name,middle_name,name,phone_number,rank_id) 
     values
         (?,?,?,?,?,?,?)
+Hibernate: 
+    select
+        e1_0.phone_number 
+    from
+        employees e1_0 
+    where
+        e1_0.id=?
+Hibernate: 
+    update
+        employees 
+    set
+        address=? 
+    where
+        id=?
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @IT
@@ -49,13 +50,26 @@ public class EmployeeServiceIT {
     }
 
     @Test
-    public void update() {
-
+    public void updateAddress() {
+        Long id = 2L;
+        String address = "Torsk, veteranov 3421,dom 45,corp 11, kv 67";
+        employeeService.updateAddress(address, id);
     }
 
     @Test
     public void delete() {
         Long id = 1L;
         employeeService.delete(id);
+
+       var expected = employeeService.findById(id);
+        assertTrue(expected.isEmpty());
+    }
+
+    @Test
+    public void findPhoneNumberById(){
+        Long id = 5L;
+       var phoneNumber =  employeeService.findPhoneNumberById(id);
+       assertTrue(phoneNumber.isPresent());
+       assertNotEquals(phoneNumber.get(),"");
     }
 }

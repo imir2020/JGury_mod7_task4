@@ -16,7 +16,7 @@ import java.util.Optional;
 @Slf4j
 @RequiredArgsConstructor
 public class UserService {
-    private final DtoToUser createUserMapper;
+    private final DtoToUser dtoToUser;
     private final UserToDto userToDto;
     private final UserRepository userRepository;
 
@@ -32,27 +32,27 @@ public class UserService {
     }
 
     public Long saveUser(FromUserDtoToBase fromUserDtoToBase) {
-//        var validationFactory = Validation.buildDefaultValidatorFactory();
-//        var validator = validationFactory.getValidator();
-//        var validationResult = validator.validate(createUserDto);
-//        if(!validationResult.isEmpty()){
-//            throw new ConstraintViolationException(validationResult);
-//        }
-        var user = createUserMapper.mapFrom(fromUserDtoToBase);
+        var user = dtoToUser.mapFrom(fromUserDtoToBase);
         var result = userRepository.save(user);
+        log.info("Attempt to save fromUserDtoToBase object in method saveUser()");
         return result.getId();
     }
 
     public void delete(Long id){
         userRepository.deleteById(id);
+        log.info("Attempt to delete User object by your id, in method delete()");
+
     }
 
     public void deleteByPassword(String password){
        var user = userRepository.findByPassword(password).get();
        userRepository.deleteById(user.getId());
+        log.info("Attempt to delete User object by your password, in method delete()");
+
     }
 
     public Optional<UserDto> findById(Long id){
+        log.info("Attempt to extract UserDto object in method findById()");
         return userRepository.findById(id).map(userToDto::mapFrom);
     }
 }

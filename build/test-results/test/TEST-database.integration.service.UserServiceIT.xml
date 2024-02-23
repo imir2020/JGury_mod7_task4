@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="database.integration.service.UserServiceIT" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-02-22T10:53:53" hostname="LOCALHOST" time="0.017">
+<testsuite name="database.integration.service.UserServiceIT" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-02-22T17:27:55" hostname="LOCALHOST" time="0.018">
   <properties/>
   <testcase name="saveUser()" classname="database.integration.service.UserServiceIT" time="0.006"/>
-  <testcase name="delete()" classname="database.integration.service.UserServiceIT" time="0.004"/>
-  <testcase name="findLogin()" classname="database.integration.service.UserServiceIT" time="0.005"/>
+  <testcase name="delete()" classname="database.integration.service.UserServiceIT" time="0.005"/>
+  <testcase name="findLogin()" classname="database.integration.service.UserServiceIT" time="0.006"/>
   <system-out><![CDATA[Hibernate: 
     insert 
     into

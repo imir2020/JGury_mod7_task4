@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="database.integration.service.ProductServiceIT" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-02-22T10:53:53" hostname="LOCALHOST" time="0.027">
+<testsuite name="database.integration.service.ProductServiceIT" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-02-22T17:27:55" hostname="LOCALHOST" time="0.03">
   <properties/>
   <testcase name="delete()" classname="database.integration.service.ProductServiceIT" time="0.004"/>
-  <testcase name="findAll()" classname="database.integration.service.ProductServiceIT" time="0.01"/>
-  <testcase name="update()" classname="database.integration.service.ProductServiceIT" time="0.001"/>
+  <testcase name="updateProductPriceForOneById()" classname="database.integration.service.ProductServiceIT" time="0.006"/>
+  <testcase name="findAll()" classname="database.integration.service.ProductServiceIT" time="0.008"/>
   <testcase name="findById()" classname="database.integration.service.ProductServiceIT" time="0.003"/>
-  <testcase name="save()" classname="database.integration.service.ProductServiceIT" time="0.006"/>
+  <testcase name="save()" classname="database.integration.service.ProductServiceIT" time="0.007"/>
   <system-out><![CDATA[Hibernate: 
+    select
+        p1_0.id,
+        c1_0.id,
+        c1_0.category_name,
+        p1_0.count,
+        p1_0.name,
+        p1_0.price_for_one,
+        s1_0.id,
+        s1_0.address,
+        s1_0.e_mail,
+        s1_0.name,
+        s1_0.phone_number 
+    from
+        products p1_0 
+    left join
+        category c1_0 
+            on c1_0.id=p1_0.category_id 
+    left join
+        suppliers s1_0 
+            on s1_0.id=p1_0.supplier_id 
+    where
+        p1_0.id=?
+Hibernate: 
+    update
+        products 
+    set
+        price_for_one=? 
+    where
+        id=?
+Hibernate: 
     select
         p1_0.id,
         c1_0.id,

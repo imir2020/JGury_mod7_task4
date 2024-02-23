@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="database.integration.repository.CategoryRepositoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-02-22T10:53:52" hostname="LOCALHOST" time="0.586">
+<testsuite name="database.integration.repository.CategoryRepositoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-02-22T17:27:54" hostname="LOCALHOST" time="0.631">
   <properties/>
-  <testcase name="delete()" classname="database.integration.repository.CategoryRepositoryTest" time="0.484"/>
-  <testcase name="findAll()" classname="database.integration.repository.CategoryRepositoryTest" time="0.041"/>
-  <testcase name="update()" classname="database.integration.repository.CategoryRepositoryTest" time="0.026"/>
-  <testcase name="findById()" classname="database.integration.repository.CategoryRepositoryTest" time="0.004"/>
-  <testcase name="save()" classname="database.integration.repository.CategoryRepositoryTest" time="0.027"/>
+  <testcase name="delete()" classname="database.integration.repository.CategoryRepositoryTest" time="0.53"/>
+  <testcase name="findAll()" classname="database.integration.repository.CategoryRepositoryTest" time="0.043"/>
+  <testcase name="update()" classname="database.integration.repository.CategoryRepositoryTest" time="0.027"/>
+  <testcase name="findById()" classname="database.integration.repository.CategoryRepositoryTest" time="0.005"/>
+  <testcase name="save()" classname="database.integration.repository.CategoryRepositoryTest" time="0.024"/>
   <system-out><![CDATA[
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -15,7 +15,7 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.1.0)
 
-2024-02-22T13:53:52.004+03:00  WARN 13992 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-22T20:27:53.818+03:00  WARN 14004 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 Hibernate: 
     select
         c1_0.id,

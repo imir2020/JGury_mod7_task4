@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="database.integration.repository.SupplierRepositoryTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-02-22T10:53:53" hostname="LOCALHOST" time="0.038">
+<testsuite name="database.integration.repository.SupplierRepositoryTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-02-22T17:27:55" hostname="LOCALHOST" time="0.035">
   <properties/>
-  <testcase name="delete()" classname="database.integration.repository.SupplierRepositoryTest" time="0.005"/>
+  <testcase name="delete()" classname="database.integration.repository.SupplierRepositoryTest" time="0.004"/>
   <testcase name="findAll()" classname="database.integration.repository.SupplierRepositoryTest" time="0.004"/>
-  <testcase name="update()" classname="database.integration.repository.SupplierRepositoryTest" time="0.002"/>
-  <testcase name="findById()" classname="database.integration.repository.SupplierRepositoryTest" time="0.004"/>
-  <testcase name="listPhoneNumbers()" classname="database.integration.repository.SupplierRepositoryTest" time="0.007"/>
-  <testcase name="save()" classname="database.integration.repository.SupplierRepositoryTest" time="0.004"/>
-  <testcase name="listEmailAndPhoneNumbers()" classname="database.integration.repository.SupplierRepositoryTest" time="0.008"/>
+  <testcase name="update()" classname="database.integration.repository.SupplierRepositoryTest" time="0.006"/>
+  <testcase name="findById()" classname="database.integration.repository.SupplierRepositoryTest" time="0.003"/>
+  <testcase name="listPhoneNumbers()" classname="database.integration.repository.SupplierRepositoryTest" time="0.005"/>
+  <testcase name="save()" classname="database.integration.repository.SupplierRepositoryTest" time="0.003"/>
+  <testcase name="listEmailAndPhoneNumbers()" classname="database.integration.repository.SupplierRepositoryTest" time="0.006"/>
   <system-out><![CDATA[Hibernate: 
     select
         s1_0.id,
@@ -19,7 +19,7 @@
         suppliers s1_0 
     where
         s1_0.id=?
-2024-02-22T13:53:53.234+03:00  WARN 13992 --- [    Test worker] d.i.repository.SupplierRepositoryTest    : Object was deleted in method delete()
+2024-02-22T20:27:55.148+03:00  WARN 14004 --- [    Test worker] d.i.repository.SupplierRepositoryTest    : Object was deleted in method delete()
 Hibernate: 
     select
         s1_0.id,
@@ -29,6 +29,24 @@ Hibernate:
         s1_0.phone_number 
     from
         suppliers s1_0
+Hibernate: 
+    update
+        suppliers 
+    set
+        e_mail=? 
+    where
+        id=?
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.address,
+        s1_0.e_mail,
+        s1_0.name,
+        s1_0.phone_number 
+    from
+        suppliers s1_0 
+    where
+        s1_0.id=?
 Hibernate: 
     select
         s1_0.id,

@@ -58,13 +58,12 @@ public class SaleRepositoryTest {
 
     @Test
     public void update() {
-//        Long id = 1L;
-//        Sales sales = salesRepository.findById(id).get();
-//        sales.setCount(15L);
-//
-//        salesRepository.update(sales,id);
-//        Sales beforeUpdate = salesRepository.findById(id).get();
-//        assertEquals(sales, beforeUpdate);
+        Long id = 1L;
+        Long countSale = 15L;
+
+        salesRepository.update(countSale,id);
+        var sales = salesRepository.findById(id).get();
+        assertEquals(countSale, sales.getCount());
 
     }
 

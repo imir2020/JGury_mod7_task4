@@ -5,6 +5,7 @@ import annotation.IT;
 import by.database.entity.Employee;
 import by.database.entity.Rank;
 import by.database.repository.EmployeeRepository;
+import by.database.repository.Greid;
 import by.database.repository.RankRepository;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
@@ -16,8 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @IT
@@ -65,15 +65,12 @@ public class EmployeeRepositoryTest {
 
     @Test
     public void update() {
-//        Long id = 8L;
-//        Employee employee = employeesRepository.findById(id).get();
-//        employee.setPhoneNumber("8-992-555-10-00");
-//        employee.setName("Leonid");
-//
-//        employeesRepository.update(employee, id);
-//        Employee getEmployee = employeesRepository.findById(id).get();
-//        assertEquals(employee, getEmployee);
-//        log.info("Object from method update() is updated: {}", employee);
+        Long id = 8L;
+        String newAddress = "Astana, veteranov 453,dom 45,corp 2, kv 23";
+        employeesRepository.updateAddress(newAddress, id);
+        Employee updateEmployee = employeesRepository.findById(id).get();
+        assertEquals(newAddress, updateEmployee.getAddress());
+        log.info("Object address from method update() is updated: {}", newAddress);
     }
 
     @Test
@@ -92,9 +89,9 @@ public class EmployeeRepositoryTest {
      */
     @Test
     public void findAllEmployeesLessManagers() {
-//        List<Employees> list = employeesRepository.findAllEmployeesLessManagers();
-//        list.forEach(System.out::println);
-//        assertThat(list).hasSize(7);
+        List<Employee> list = employeesRepository.findAllEmployeesLessManagers(Greid.MANAGER);
+        list.forEach(System.out::println);
+        assertThat(list).hasSize(7);
     }
 
     /**
@@ -102,18 +99,10 @@ public class EmployeeRepositoryTest {
      */
     @Test
     public void findEmployeesPhoneNumberById() {
-//        Long employeeId = 2L;
-//
-//        String phoneNumber = employeesRepository.findEmployeesPhoneNumberById(employeeId);
-//        assertEquals("8-925-444-89-17", phoneNumber);
-//        System.out.println(phoneNumber);
-    }
+        Long employeeId = 2L;
 
-    @Test
-    public void changeEmployeeStatus() {
-//        Long employeeId = 6L;
-//        Employees employee = employeesRepository.changeEmployeeStatus(employeeId, Greid.MANAGER);
-//        Employees employeeFromBase = employeesRepository.findById(employeeId).get();
-//        assertEquals(employee.getRank().getRankName(), employeeFromBase.getRank().getRankName());
+        var phoneNumber = employeesRepository.findPhoneNumberById(employeeId);
+        assertNotNull(phoneNumber);
+        System.out.println(phoneNumber);
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @IT
@@ -65,11 +66,12 @@ public class ProductRepositoryTest {
 
     @Test
     public void update() {
-//        Long id = 1L;
-//        Product product = productsRepository.findById(id).get();
-//        product.setCount(700L);
-//        productsRepository.updateProductById(product, id);
-//        log.info("Object was updated in method update(): {}", product);
+        Long id = 1L;
+        Long priceForOne = 250L;
+        productsRepository.updateProductPriceForOneById(priceForOne, id);
+        Product product = productsRepository.findById(id).get();
+        assertEquals(priceForOne, product.getPriceForOne());
+        log.info("Object was updated in method update(): {}", product);
     }
 
     @Test

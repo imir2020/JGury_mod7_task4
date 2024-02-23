@@ -1,6 +1,6 @@
 package by.database.repository;
 
-import by.database.entity.Status;
+import by.database.entity.UserStatus;
 import by.database.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,12 +18,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User save(User user);
 
-//    @Modifying
-//    @Query("""
-//            update User u
-//            set u =:user
-//            """)
-//    void update(User user, Long id);
+    @Modifying
+    @Query("""
+            update User u
+            set u.status = :status
+            where u.id = :id
+            """)
+    void updateStatus(UserStatus status, Long id);
 
     void deleteById(Long id);
 
@@ -40,7 +41,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
             select u from User u 
             where u.status =:status
             """)
-    List<User> findByStatus(Status status);
+    List<User> findByStatus(UserStatus status);
 
     /**
      * Вывести всех пользователей отсортированных по имени

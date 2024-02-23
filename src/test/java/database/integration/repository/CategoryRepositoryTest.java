@@ -49,7 +49,7 @@ public class CategoryRepositoryTest {
     public void update() {
         Long id = 4L;
         String nextName = "Unknown_111";
-        categoryRepository.update(nextName, id);
+        categoryRepository.updateName(nextName, id);
         Category category = categoryRepository.findById(id).get();
 
         assertEquals(nextName,category.getCategoryName());
@@ -60,5 +60,8 @@ public class CategoryRepositoryTest {
     public void delete() {
         Long id = 4L;
         categoryRepository.deleteById(id);
+
+        var expected = categoryRepository.findById(id);
+        assertTrue(expected.isEmpty());
     }
 }

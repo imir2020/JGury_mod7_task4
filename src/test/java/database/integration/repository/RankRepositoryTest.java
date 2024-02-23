@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @IT
@@ -47,10 +46,11 @@ public class RankRepositoryTest {
     @Test
     public void update() {
         Long id = 1L;
+        Long salary = 85000L;
 
+        ranksRepository.updateRankSalary(salary, id);
         Rank rank = ranksRepository.findById(id).get();
-        rank.setSalary(45000L);
-        ranksRepository.save(rank);
+        assertEquals(salary,rank.getSalary());
     }
 
     @Test

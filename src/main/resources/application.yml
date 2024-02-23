@@ -22,9 +22,10 @@ db:
 logging:
   level:
     root: WARN
-    by.database.repository.pool: INFO
+    by.service: INFO
+    by.servlets: INFO
   file:
-    name: by
+    name: logFile
     path: /
 
 spring:
@@ -39,6 +40,8 @@ spring:
       show_sql: true
       format_sql: true
       hbm2ddl.auto: validate
+      #open-in-view: false
 spring.mvc.view.prefix: /WEB-INF/jsp/
 spring.mvc.view.suffix: .jsp
+
 

@@ -1,14 +1,14 @@
 package by.mapper.map_interfaces.user;
 
-import by.database.entity.Status;
 import by.database.entity.User;
+import by.database.entity.UserStatus;
 import by.dto.user_dto.FromUserDtoToBase;
 import java.time.LocalDate;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-22T13:34:00+0300",
+    date = "2024-02-22T20:27:46+0300",
     comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.jar, environment: Java 17.0.8 (Oracle Corporation)"
 )
 public class DtoToUserMapperImpl implements DtoToUserMapper {
@@ -27,7 +27,7 @@ public class DtoToUserMapperImpl implements DtoToUserMapper {
         }
         user.password( userDto.getPassword() );
         if ( userDto.getStatus() != null ) {
-            user.status( Enum.valueOf( Status.class, userDto.getStatus() ) );
+            user.status( Enum.valueOf( UserStatus.class, userDto.getStatus() ) );
         }
 
         return user.build();

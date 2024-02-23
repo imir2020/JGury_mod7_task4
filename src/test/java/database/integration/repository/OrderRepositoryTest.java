@@ -62,12 +62,11 @@ public class OrderRepositoryTest {
 
     @Test
     public void update() {
-//        Long orderId = 1L;
-//        Orders order = orderRepository.findById(orderId).get();
-//        String productName = "chocolate";
-//        assertNotNull(order);
-//        order.setNameProduct(productName);
-//        orderRepository.updateOrderByName(order,orderId);
+        Long orderId = 1L;
+        String productName = "chocolate";
+        orderRepository.update(productName,orderId);
+        var result = orderRepository.findById(orderId).get();
+        assertEquals(productName,result.getNameProduct());
 
     }
 
