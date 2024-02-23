@@ -8,7 +8,10 @@ import by.dto.employees_dto.FromEmployeeDtoToBase;
 import by.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
+import java.awt.print.Pageable;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -23,6 +26,23 @@ public class EmployeeServiceIT {
     @Test
     public void findAll() {
         var actualResultList = employeeService.findAll();
+        assertTrue(actualResultList.size() > 0);
+        actualResultList.forEach(System.out::println);
+    }
+
+    @Test
+    public void findAllByOrderByNameAsc(){
+        Integer page = 0;
+        Integer sizePage = 2;
+        var actualResultList = employeeService.findAllByOrderByName(0,2);
+        assertTrue(actualResultList.size() > 0);
+        actualResultList.forEach(System.out::println);
+    }
+    @Test
+    public void findPhoneNumbersByOrderByPhoneNumberAsc(){
+        Integer page = 1;
+        Integer sizePage = 4;
+        var actualResultList = employeeService.findAllPhoneNumbers(page,sizePage);
         assertTrue(actualResultList.size() > 0);
         actualResultList.forEach(System.out::println);
     }

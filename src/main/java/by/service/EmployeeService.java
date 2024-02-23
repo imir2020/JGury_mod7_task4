@@ -1,6 +1,7 @@
 package by.service;
 
 
+import by.database.entity.Employee;
 import by.database.repository.EmployeeRepository;
 import by.dto.employees_dto.EmployeeDto;
 import by.dto.employees_dto.FromEmployeeDtoToBase;
@@ -8,6 +9,8 @@ import by.mapper.classes.employees.DtoToEmployee;
 import by.mapper.classes.employees.EmployeeToDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,9 +27,37 @@ public class EmployeeService {
 
 
     public List<EmployeeDto> findAll() {
-        log.info("Attempt to extract EmployeeDto collection in method findAll()");
-        return employeesRepository.findAll().stream().map(employeeToDto::mapFrom)
+        var pageable = PageRequest.of(0,2, Sort.by("id"));
+        var resultList = employeesRepository.findAll().stream().map(employeeToDto::mapFrom)
                 .collect(Collectors.toList());
+        log.info("Attempt to extract EmployeeDto collection in method findAll()");
+
+        return resultList;
+
+    }
+
+    public List<EmployeeDto> findAllByOrderByName(Integer page, Integer sizePage) {
+        var dynamicSort = Sort.sort(Employee.class);
+        var sort = dynamicSort.by(Employee::getId).ascending();
+        var pageable = PageRequest.of(page,sizePage, sort);
+
+        var resultList = employeesRepository.findAllByOrderByNameAsc(pageable)
+                .stream()
+                .map(employeeToDto::mapFrom)
+                .collect(Collectors.toList());
+        log.info("Attempt to extract EmployeeDto page in method findAllByOrderByName(): {}" + resultList);
+        return resultList;
+    }
+
+    public List<String> findAllPhoneNumbers(Integer page, Integer sizePage){
+        var dynamicSort = Sort.sort(Employee.class);
+        var sort = dynamicSort.by(Employee::getId).ascending();
+        var pageable = PageRequest.of(page,sizePage, sort);
+        var resultList = employeesRepository.findPhoneNumbersBy(pageable);
+        log.info("""
+        Attempt to extract PhoneNumbers collection in the form of page in method findAllByOrderByName(): {}
+        """ + resultList);
+        return resultList;
 
     }
 
